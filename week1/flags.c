@@ -7,7 +7,9 @@ int main(void) {
     return 0;
 }
 
-// gcc -E gcc_flags.c
-// gcc -S gcc_flags.c
-// gcc -c gcc_flags.c
-// gcc gcc_flags.c
+// Try compiling this file with
+// gcc -E flags.c
+// gcc -S flags.c
+// gcc -c flags.c
+// gcc flags.c
+// to figure out what each of these flags do.

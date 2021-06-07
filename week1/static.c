@@ -1,7 +1,10 @@
+// What do you expect this program to print?
+// What do you expect this program to print if we add
+// static in front of line 8?
 #include <stdio.h>
 
 int counter(void) {
-    // right now, this int isn't static.
+    // what happens if we turn this int into a static int?
     int count = 0;
     count++;
     return count;

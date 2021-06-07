@@ -1,13 +1,14 @@
 #include <stdio.h>
 
-char *foo = "hello";
 
 int main(void) {
+    char *foo = "hello";
     char *bar = "world";
-    char *baz = "goodbye";
 
     printf("%s %s\n", foo, bar);
 
     // but what if i want to say hullo?
-
+    foo[1] = 'u';
+    
+    // this code will result in a segmentation fault. why?
 }
