@@ -11,7 +11,7 @@ int main(void) {
 
     // print every number from 1 to 10 inclusive with a for loop.
     
-    for (int j = 0; j <= 10; j++) {
+    for (int j = 1; j <= 10; j++) {
         printf("%d\n", j);
     }
     // j stops existing outside the for loop, meaning the next line won't work
