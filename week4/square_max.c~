@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main(void) {
+    int x, y;
+    printf("Enter a number: ");
+    scanf("%d", &x);
+
+    // 46341
+    if (x > 46340) {
+        goto print_too_big;
+    }
+
+print_square:
+    y = x * x;
+    printf("%d\n", y);
+    
+print_too_big:
+    printf("square too big for 32 bits\n");
+    
+    return 0;
+}
