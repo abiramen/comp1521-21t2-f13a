@@ -1,4 +1,5 @@
 // A simple C program that attempts to be punny
+// Taken from the week 04 tutorial questions.
 
 #include <stdio.h>
 
