@@ -13,7 +13,8 @@ main:
     move $t0, $v0 # $t0 = x
     
     mul $t1, $t0, $t0 # y = x * x;
-    
+ 
+bp_1:
     move $a0, $t1 # printf("%d\n", y);
     li $v0, 1
     syscall 
