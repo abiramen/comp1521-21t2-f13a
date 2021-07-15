@@ -76,7 +76,7 @@ fib__body:
         addi    $a0, $s0, -2            # call fib(n - 2)
         jal     fib
 
-        add     $v0, $v0, $s1           # v0 = fib(n - 2) + fib(n - 1)
+        add     $v0, $v0, $s1           # fib(n - 2) + fib(n - 1)
         j       fib__epilogue
 
 fib__base:
