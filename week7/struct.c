@@ -12,17 +12,25 @@ struct _node {      // 0x2000
 };
 
 struct _enrolment {     // 0x3000
-    int stu_id;         // 04 bytes
-    char course[9]:     // 09 bytes
-    char term[5];       // 05 bytes
-    char grade[3];      // 03 bytes
-    double mark;        // 08 bytes 
+    int stu_id;         // 04 bytes - 0x3000 to 0x3003
+    char course[9]:     // 09 bytes - 0x3004 to 0x300c
+    char term[5];       // 05 bytes - 0x300d to 0x3011
+    char grade[3];      // 03 bytes - 0x3012 to 0x3014
+                        /* 03 bytes of padding - 0x3015 to 0x3017 */
+    double mark;        // 08 bytes - 0x3018 to 0x301f
 };
 
+sizeof(struct _enrolment);
+
+// unaligned read/write - bad address
+// lw or sw
+
 struct _queue {
-    int nitems;     // # items currently in queue
-    int head;       // index of oldest item added
-    int tail;       // index of most recent item added
-    int maxitems;   // size of array
-    Item *items;    // malloc'd array of Items
+    int nitems;     // 04 bytes
+    int head;       // 04 bytes
+    int tail;       // 04 bytes
+    int maxitems;   // 04 bytes
+    Item *items;    // 04 bytes
 };
+
+sizeof(struct _queue);

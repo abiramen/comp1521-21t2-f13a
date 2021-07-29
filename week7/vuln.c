@@ -1,3 +1,8 @@
+// Bonus content - why system is bad!
+// This code is not something you're expected to understand by any means -
+// I yoinked it from the COMP6447 course myself and modified it for this demo.
+// The only relevant stuff is from line 65 to 74.
+
 #include <netinet/in.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -56,9 +61,15 @@ int handle_conn(int socket) {
     char string[MAX_LEN + 5];
 
     write_socket(socket, ON_READY, sizeof(ON_READY));
+    
+    // Essentially, all this does is take a string received by the server,
+    // stick the word echo in front of it, and run the command
+
     strcpy(string, "echo ");
     memset(&string[5], 0, MAX_LEN);
     read_socket(socket, &string[5], MAX_LEN);
+
+
     printf("I was told %s. Here you go:", string);
     system(string); 
 }
