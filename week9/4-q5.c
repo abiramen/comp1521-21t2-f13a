@@ -1,10 +1,7 @@
 // Write a C program, chmod_if_public_write.c, which is given 1+ command-line
 // arguments which are the pathnames of files or directories.
 
-// If the file or directory is publically-writeable, it should change it to be
-// not publically-writeable, leaving other permissions unchanged.
 
-// It also should print a line to stdout as per the example below.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,8 +18,26 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+// If the file or directory is publically-writeable, it should change it to be
+// not publically-writeable, leaving other permissions unchanged.
+
+// It also should print a line to stdout as per the example below.
+
 void chmod_if_needed(char *pathname) {
-    // TODO: Implement this function.
+    struct stat s;
+    if (stat(pathname, &s) == 0) {
+        if (s.st_mode & S_IWOTH) {
+            // if the file is publically writeable
+            int new_mode = s.st_mode & (~S_IWOTH);
+            chmod(pathname, new_mode);
+            printf("removing public write from %s\n", pathname);
+        } else {
+            // others don't have write
+            printf("%s is not publically writeable\n", pathname);
+        }
+    } else {
+        fprintf(stderr, "error using stat on %s\n", pathname);
+    }
 }
 
 

@@ -24,6 +24,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 #define MAX_LINE 65536
 
@@ -40,7 +41,9 @@ int main(int argc, char *argv[]) {
 
         for(int argument = 2; argument < argc; argument = argument + 1) {
             FILE *in = fopen(argv[argument], "r");
-            // TODO: handle errors
+            if (in == NULL) {
+                fprintf(stderr, "%s: %s: %s", argv[1], argv[argument], strerror(errno));
+            }
 
             search_stream(in, argv[argument], argv[1]);
             fclose(in);
@@ -54,4 +57,12 @@ int main(int argc, char *argv[]) {
 void search_stream(FILE *stream, char stream_name[], char search_for[]) {
     // TODO: complete this function
     // hint: look at `strstr(3)'
+    char line[MAX_LINE];
+    int line_number = 1;
+    while (fgets(line, MAX_LINE, stream) != NULL) {
+        if (strstr(line, search_for) != NULL) {
+            printf("%s: %d: %s", stream_name, line_number, line);
+        }
+        line_number++;
+    }
 }

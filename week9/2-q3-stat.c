@@ -10,9 +10,32 @@ int main(int argc, char *argv[]) {
             perror(argv[i]);
             continue;
         }
+
+        // octal number
+        int mode = 0644;
+
         printf("-- file: %s --\n", argv[i]);
+
+
         printf("st_ino = %ld\n", s.st_ino);
         printf("st_mode = %o\n", s.st_mode);
+
+        // if ((s.st_mode & S_IFMT) == S_IFREG) {
+        //     printf("this is a regular file\n");
+        // } else {
+        //     printf("this is not a regular file\n");
+        // }
+
+        if (s.st_mode & S_IWGRP) {
+            printf("group can write to file!\n");
+        }
+
+        if (S_ISREG(s.st_mode)) {
+            printf("this is a regular file\n");
+        } else {
+            printf("this is not a regular file\n");
+        }
+
         printf("st_uid = %d\n", s.st_uid);
         printf("st_gid = %d\n", s.st_gid);
         printf("st_size = %ld\n", s.st_size);

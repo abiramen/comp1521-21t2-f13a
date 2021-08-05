@@ -8,9 +8,12 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-    // TODO: complete this function.
+    // todo: add error if wrong number of arguments
+    FILE *stream = fopen(argv[1], "w");
+    // todo: rest
     return 0;
 }
 
 // What change would we make if we wanted to append to a file rather than
 // overwrite it?
+// use mode "a"
