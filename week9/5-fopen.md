@@ -1,10 +1,10 @@
 # Q7-9: fopen
 
 ### What does fopen do? What are its parameters?
-- opens a file
+- opens a file, associates a stream with it, and returns a pointer we can pass to other library functions (like `fgets`, `fgetc`)
     - takes in a pathname
     - a 'mode'
-        - man 3 fopen
+        - `man 3 fopen`
 
 ### What are some circumstances it may return NULL?
     - returns NULL when there is an error

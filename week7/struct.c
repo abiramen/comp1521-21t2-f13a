@@ -20,7 +20,7 @@ struct _enrolment {     // 0x3000
     double mark;        // 08 bytes - 0x3018 to 0x301f
 };
 
-sizeof(struct _enrolment);
+// sizeof(struct _enrolment);
 
 // unaligned read/write - bad address
 // lw or sw
@@ -33,4 +33,4 @@ struct _queue {
     Item *items;    // 04 bytes
 };
 
-sizeof(struct _queue);
+// sizeof(struct _queue);
