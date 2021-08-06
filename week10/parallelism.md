@@ -10,7 +10,8 @@ However, we need to preserve information about the process if we want to be able
 need to preserve the following information about state:
 
 - Values of CPU registers (trapframe)
-    - Program counter
+    - Program counter <- keeps track of what instruction we're up to
+    - Execution state of the program
 
 # Threads
 
@@ -24,4 +25,18 @@ Processes contain a lot more information about them than threads - for example:
     - threads share the same address space as their parent process
     - threads only really need to keep track of their execution state; that is, where within the thread they are up to
     - this means that global variables are shared between threads
-- processes share other resources, such as open files
+
+
+```
+counter = 0
+
+increment_thread:
+    counter++; // counter now equals 1
+    printf("%d\n", counter);
+
+decrement_thread:
+    counter--; // counter now equals to 0
+    printf("%d\n", counter);
+```
+
+- threads share other resources, such as open files

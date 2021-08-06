@@ -1,4 +1,4 @@
-/ Simulate LRU replacement of page frames
+// Simulate LRU replacement of page frames
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
 void lru(int n_physical_pages, int n_virtual_pages) {
     printf("Simulating %d pages of physical memory, %d pages of virtual memory\n",
           n_physical_pages, n_virtual_pages);
+    // Can be accessed exactly like an array of structs.
     struct ipt_entry *ipt = malloc(n_physical_pages * sizeof *ipt);
     assert(ipt);
 
@@ -52,18 +53,25 @@ void lru(int n_physical_pages, int n_virtual_pages) {
 // a single line of output describing the page access is always printed
 // the last_access_time in ipt is always updated
 
-void access_page(int virtual_page, int access_time, int n_physical_pages, struct ipt_entry *ipt) {
-
+void access_page(int virtual_page, int access_time, int n_physical_pages,
+                 struct ipt_entry *ipt) {
+              
     // PUT YOUR CODE HERE TO HANDLE THE 3 cases
     //
-    // 1) The virtual page is already in a physical page
+    // 1) The virtual page is already in a physical frame
+    //    - update the last update time
     //
     // 2) The virtual page is not in a physical page,
     //    and there is free physical page
-    //
+    //    - map a virtual page to a physical frame
+    //    - update the physical frame entry in the IPT to map to the virtual page
+    //    - update the last update time
+
     // 3) The virtual page is not in a physical page,
     //    and there is no free physical page
-    //
+    //    - find the least recently used page, and evict it
+    //    - update the new free frame to map to our virtual page
+    //    - update the last update time
     // don't forgot to update the last_access_time of the virtual_page
 
     printf("Time %d: virtual page %d accessed\n", access_time, virtual_page);
